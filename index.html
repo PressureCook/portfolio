@@ -39,7 +39,7 @@ nav.top a:hover{color:var(--accent)}
 /* hero */
 .hero{padding:48px 0 56px;border-bottom:1px solid var(--line)}
 .hero h1{font-size:clamp(44px,9vw,104px);line-height:.95;letter-spacing:-.035em;margin:0 0 24px;font-weight:700}
-.hero h1 .note{font:700 clamp(26px,4vw,40px)/1 var(--script);color:var(--hand);letter-spacing:0;display:inline-block;transform:rotate(-4deg);margin-left:12px;vertical-align:middle}
+.egg-note{font:700 clamp(26px,4vw,40px)/1 var(--script);color:var(--hand);letter-spacing:0;display:inline-block;transform:rotate(-4deg);margin-left:12px;vertical-align:middle}
 .hero p.lede{font-size:clamp(19px,2.4vw,24px);line-height:1.45;max-width:760px;margin:0 0 28px;color:var(--ink-2)}
 .hero p.lede b{color:var(--ink);font-weight:600}
 .facts{display:flex;flex-wrap:wrap;gap:8px 22px;font:13px/1.5 var(--mono);color:var(--ink-3)}
@@ -93,18 +93,28 @@ footer{padding:48px 0 64px;display:flex;flex-wrap:wrap;justify-content:space-bet
 footer a{text-decoration:none;margin-right:18px}
 footer a:hover{color:var(--accent)}
 .theme{background:none;border:1px solid var(--line);color:var(--ink-3);font:12px var(--mono);border-radius:999px;padding:4px 10px;cursor:pointer;margin-left:18px}
+.egg-dot{background:none;border:0;padding:0 2px;font:inherit;color:inherit;cursor:default}
+.egg{position:fixed;inset:0;display:none;place-items:center;background:rgba(10,10,12,.55);z-index:50;padding:16px}
+.egg.on{display:grid;animation:fade .25s ease}
+.egg figure{margin:0;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 14px 10px;max-width:320px;width:100%;transform:rotate(-2deg);box-shadow:0 20px 50px -20px rgba(0,0,0,.6);position:relative;animation:pop .35s cubic-bezier(.2,1.4,.4,1)}
+.egg img{width:100%;display:block;border-radius:6px;aspect-ratio:3/4;object-fit:cover;background:var(--tag)}
+.egg .egg-note{position:absolute;top:-22px;right:-10px;font-size:46px;color:#f5c518;margin:0;text-shadow:0 2px 0 rgba(0,0,0,.25)}
+.egg figcaption{font:600 26px/1.1 var(--script);color:var(--hand);margin:10px 2px 4px}
+.egg small{display:block;font:11px var(--mono);color:var(--ink-3)}
+.egg small a{color:inherit}
+@keyframes fade{from{opacity:0}}@keyframes pop{from{transform:rotate(-2deg) scale(.6);opacity:0}}
 </style>
 </head>
 <body>
 <div class="wrap">
 
 <nav class="top">
-  <span>takunda kuyayama / larry</span>
+  <span>takunda kuyayama</span>
   <span><a href="#work">work</a><a href="#about">about</a><a href="https://github.com/PressureCook">github</a><button class="theme" id="theme" aria-label="Toggle colour theme">◐</button></span>
 </nav>
 
 <header class="hero">
-  <h1>Takunda Kuyayama <span class="note">(Larry)</span></h1>
+  <h1>Takunda Kuyayama</h1>
   <p class="lede">Software engineer in South Wales. I build things to find out if an idea survives contact with code: <b>a three dial model of psychopathy</b>, <b>societies of learning agents</b>, <b>prosthetic joints designed by evolution</b>, and a fruit scanner that runs on a phone with no signal.</p>
   <div class="facts">
     <span>BSc Software Engineering, Swansea, 2:1 (2026)</span>
@@ -276,10 +286,26 @@ footer a:hover{color:var(--accent)}
 
 <footer>
   <div><a href="https://www.linkedin.com/in/takunda-kuyayama/">linkedin</a><a href="https://github.com/PressureCook">github</a></div>
-  <div>Swansea, Wales · 2026</div>
+  <div>Swansea, Wales <button class="egg-dot" id="eggDot" aria-label="?">·</button> 2026</div>
 </footer>
 
+<div class="egg" id="egg" role="dialog" aria-label="Easter egg">
+  <figure>
+    <span class="egg-note">(Larry)</span>
+    <img data-src="https://commons.wikimedia.org/wiki/Special:FilePath/Larry_Bird_Lipofsky_(high_quality)_(cropped).jpg?width=640" alt="Larry Bird playing for the Boston Celtics">
+    <figcaption>no, the other Larry.</figcaption>
+    <small>Photo: Steve Lipofsky, <a href="https://commons.wikimedia.org/wiki/File:Larry_Bird_Lipofsky_(high_quality)_(cropped).jpg">CC BY-SA 3.0</a></small>
+  </figure>
 </div>
+
+</div>
+<script>
+(function(){var e=document.getElementById('egg'),im=e.querySelector('img');
+function show(){if(!im.src)im.src=im.dataset.src;e.classList.add('on')}
+function hide(){e.classList.remove('on')}
+document.getElementById('eggDot').onclick=show;e.onclick=hide;
+var buf='';addEventListener('keydown',function(k){if(k.key==='Escape')return hide();if(k.key.length===1){buf=(buf+k.key.toLowerCase()).slice(-5);if(buf==='larry')show()}});})();
+</script>
 <script>
 (function(){var b=document.getElementById('theme'),r=document.documentElement,k='theme';
 try{var s=localStorage.getItem(k);if(s)r.setAttribute('data-theme',s)}catch(e){}
