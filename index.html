@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Takunda Kuyayama</title>
+<meta name="description" content="Software engineer in South Wales. Simulations, machine learning, evolved prosthetics and the odd buggy ray tracer.">
+<meta property="og:title" content="Takunda Kuyayama, software engineer">
+<meta property="og:description" content="Things I've built: simulations, ML, evolved prosthetics, apps.">
+<meta property="og:image" content="img/psycho.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Caveat:wght@600;700&display=swap">
+<style>
+:root{
+  --bg:#f4f1ea; --paper:#fbfaf6; --ink:#16181c; --ink-2:#4b4f57; --ink-3:#7d818a;
+  --line:#dcd7cb; --accent:#d4521f; --accent-2:#1f5fd4; --tag:#ebe6da;
+  --hand:#c2410c;
+  --sans:"IBM Plex Sans",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace; --script:"Caveat",cursive;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f1012; --paper:#17191c; --ink:#ecebe6; --ink-2:#b4b3ad; --ink-3:#83837e;
+  --line:#2a2c30; --accent:#ff7a45; --accent-2:#7aa7ff; --tag:#222428; --hand:#ffb347; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1012; --paper:#17191c; --ink:#ecebe6; --ink-2:#b4b3ad; --ink-3:#83837e;
+  --line:#2a2c30; --accent:#ff7a45; --accent-2:#7aa7ff; --tag:#222428; --hand:#ffb347; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+@media(min-width:700px){.wrap{padding:0 32px}}
+
+/* top bar */
+nav.top{display:flex;justify-content:space-between;align-items:center;padding:20px 0;font:13px var(--mono);color:var(--ink-3)}
+nav.top a{text-decoration:none;margin-left:18px}
+nav.top a:hover{color:var(--accent)}
+
+/* hero */
+.hero{padding:48px 0 56px;border-bottom:1px solid var(--line)}
+.hero h1{font-size:clamp(44px,9vw,104px);line-height:.95;letter-spacing:-.035em;margin:0 0 24px;font-weight:700}
+.hero h1 .note{font:700 clamp(26px,4vw,40px)/1 var(--script);color:var(--hand);letter-spacing:0;display:inline-block;transform:rotate(-4deg);margin-left:12px;vertical-align:middle}
+.hero p.lede{font-size:clamp(19px,2.4vw,24px);line-height:1.45;max-width:760px;margin:0 0 28px;color:var(--ink-2)}
+.hero p.lede b{color:var(--ink);font-weight:600}
+.facts{display:flex;flex-wrap:wrap;gap:8px 22px;font:13px/1.5 var(--mono);color:var(--ink-3)}
+.facts span::before{content:"▸ ";color:var(--accent)}
+.cta{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:1.5px solid var(--ink);border-radius:999px;font:600 14px var(--sans);text-decoration:none;transition:.15s}
+.btn:hover{background:var(--ink);color:var(--bg)}
+.btn.solid{background:var(--ink);color:var(--bg)}
+.btn.solid:hover{background:var(--accent);border-color:var(--accent)}
+
+/* index */
+.index{padding:40px 0 8px;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:2px 28px;font:14px/1.5 var(--mono)}
+.index a{display:flex;gap:10px;padding:8px 0;border-bottom:1px dashed var(--line);text-decoration:none;color:var(--ink-2)}
+.index a:hover{color:var(--accent)}
+.index a i{font-style:normal;color:var(--ink-3)}
+h2.section{font:600 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:56px 0 0}
+
+/* project */
+.proj{display:grid;grid-template-columns:1fr;gap:28px;padding:56px 0;border-bottom:1px solid var(--line)}
+@media(min-width:880px){.proj{grid-template-columns:1.05fr 1fr;gap:56px;align-items:start}.proj.flip .media{order:2}}
+.media{position:relative;margin-bottom:14px}
+.media img{width:100%;display:block;border-radius:10px;border:1px solid var(--line);background:var(--paper)}
+.media .pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.media .scribble{position:absolute;font:700 26px/1 var(--script);color:var(--hand);right:-6px;bottom:-22px;transform:rotate(-5deg);background:var(--bg);padding:2px 8px;border-radius:6px}
+.num{font:13px var(--mono);color:var(--accent)}
+.proj h3{font-size:clamp(28px,3.6vw,40px);line-height:1.08;letter-spacing:-.02em;margin:6px 0 14px}
+.proj .hook{font-size:20px;line-height:1.45;margin:0 0 14px;color:var(--ink)}
+.proj p{margin:0 0 14px;color:var(--ink-2)}
+.proj ul{margin:0 0 16px;padding-left:18px;color:var(--ink-2)}
+.proj li{margin:4px 0}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:18px 0}
+.tags span{font:12px var(--mono);background:var(--tag);padding:4px 9px;border-radius:5px;color:var(--ink-2)}
+.links{display:flex;flex-wrap:wrap;gap:8px}
+.links a{font-size:13px;padding:8px 14px}
+.links .muted{font:13px var(--mono);color:var(--ink-3);align-self:center}
+.stat{display:flex;gap:28px;margin:6px 0 18px}
+.stat div{font:12px var(--mono);color:var(--ink-3)}
+.stat b{display:block;font:700 30px/1.1 var(--sans);color:var(--ink);letter-spacing:-.02em}
+
+/* about */
+.about{display:grid;gap:32px;padding:64px 0;border-bottom:1px solid var(--line)}
+@media(min-width:880px){.about{grid-template-columns:1fr 1.2fr;gap:56px}}
+.about h3{font-size:32px;letter-spacing:-.02em;margin:0 0 14px}
+.about p{color:var(--ink-2);margin:0 0 14px}
+.about img{width:100%;border-radius:10px;border:1px solid var(--line)}
+.next{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:22px 24px;margin-top:18px}
+.next b{font:600 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:8px}
+.next p{margin:0}
+
+footer{padding:48px 0 64px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font:13px var(--mono);color:var(--ink-3)}
+footer a{text-decoration:none;margin-right:18px}
+footer a:hover{color:var(--accent)}
+.theme{background:none;border:1px solid var(--line);color:var(--ink-3);font:12px var(--mono);border-radius:999px;padding:4px 10px;cursor:pointer;margin-left:18px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="top">
+  <span>takunda kuyayama / larry</span>
+  <span><a href="#work">work</a><a href="#about">about</a><a href="https://github.com/PressureCook">github</a><button class="theme" id="theme" aria-label="Toggle colour theme">◐</button></span>
+</nav>
+
+<header class="hero">
+  <h1>Takunda Kuyayama <span class="note">(Larry)</span></h1>
+  <p class="lede">Software engineer in South Wales. I build things to find out if an idea survives contact with code: <b>a three dial model of psychopathy</b>, <b>societies of learning agents</b>, <b>prosthetic joints designed by evolution</b>, and a fruit scanner that runs on a phone with no signal.</p>
+  <div class="facts">
+    <span>BSc Software Engineering, Swansea, 2:1 (2026)</span>
+    <span>Python · Java · TypeScript · Go · Linux · Kubernetes</span>
+    <span>Open to SRE and infrastructure roles</span>
+  </div>
+  <div class="cta">
+    <a class="btn solid" href="https://www.linkedin.com/in/takunda-kuyayama/">LinkedIn ↗</a>
+    <a class="btn" href="https://github.com/PressureCook">GitHub ↗</a>
+  </div>
+</header>
+
+<h2 class="section" id="work">The work</h2>
+<div class="index">
+  <a href="#dials"><i>01</i> Dials model</a>
+  <a href="#society"><i>02</i> Dial Society</a>
+  <a href="#v1"><i>03</i> Dials v1</a>
+  <a href="#limbforge"><i>04</i> LimbForge</a>
+  <a href="#fruit"><i>05</i> FreshScan</a>
+  <a href="#raytracer"><i>06</i> Ray tracer</a>
+  <a href="#rpg"><i>07</i> Life RPG</a>
+  <a href="#coach"><i>08</i> coach timesheet</a>
+</div>
+
+<!-- 01 -->
+<section class="proj" id="dials">
+  <div class="media"><img src="img/psycho.jpg" alt="Scatter plot of thousands of people on fear and guilt dials, with the low zone circled" loading="lazy"><span class="scribble">everyone's on here somewhere</span></div>
+  <div>
+    <span class="num">01 / research + ML</span>
+    <h3>A three dial model of psychopathy</h3>
+    <p class="hook">What if psychopathy isn't a category, just a corner of a space everyone lives in?</p>
+    <p>The model: three dials, <b>reward</b>, <b>fear</b> and <b>guilt</b>. Temperament sets where they start, upbringing moves them. Psychopathy is where fear and guilt both sit low.</p>
+    <ul>
+      <li>Factor analysis on real Short Dark Triad data to see how many dimensions actually hold up</li>
+      <li>Learning agents that play the Iowa Gambling Task, calibrated to pooled norms from a meta analysis</li>
+      <li>Gamble and harm aversion tasks that pull each dial apart, with parameter recovery checks</li>
+      <li>A PyTorch network that fuses questionnaire and task data into one dial reading, with its own uncertainty</li>
+    </ul>
+    <div class="tags"><span>Python</span><span>PyTorch</span><span>factor analysis</span><span>computational modelling</span></div>
+    <div class="links">
+      <a class="btn solid" href="play/dials-lab.html">Read your dials ↗</a>
+      <a class="btn" href="https://github.com/PressureCook/dials-model">Code</a>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section class="proj flip" id="society">
+  <div class="media"><img src="img/society.jpg" alt="Dial Society simulation dashboard" loading="lazy"></div>
+  <div>
+    <span class="num">02 / simulation</span>
+    <h3>Dial Society</h3>
+    <p class="hook">Give every person in a society the same three dials. Let them learn. Watch who ends up running the place.</p>
+    <p>Every agent is a small learning AI trying to hold more power. Each generation they imagine life under slightly different rules, push the rules their way, raise children whose dials are shaped by how they were brought up, then deal, cheat, form alliances and wear masks. Runs on real coastlines, in batches across every CPU core.</p>
+    <div class="tags"><span>JavaScript</span><span>Node.js</span><span>agent based modelling</span><span>multi core batches</span></div>
+    <div class="links">
+      <a class="btn solid" href="play/dial-society.html">Run a society ↗</a>
+      <a class="btn" href="https://github.com/PressureCook/dial-society">Code</a>
+    </div>
+  </div>
+</section>
+
+<!-- 03 -->
+<section class="proj" id="v1">
+  <div class="media"><img src="img/game.jpg" alt="Dials v1 agents in a world with too little food" loading="lazy"><span class="scribble">it threatened me</span></div>
+  <div>
+    <span class="num">03 / simulation</span>
+    <h3>Dials v1: agents that lie</h3>
+    <p class="hook">I hurt an AI in my game. It promised to behave, then gossiped about me to the others, then threatened me.</p>
+    <p>A rewrite at the level of single agents. Sixteen of them, each with their own dials, in a world with too little food. They forage, steal, give, promise, break promises, gossip and threaten. Then I measure what each dial does.</p>
+    <div class="stat"><div><b>r −0.6</b>reward vs idling</div><div><b>r −0.5</b>guilt vs theft</div><div><b>~⅓</b>survive</div></div>
+    <div class="tags"><span>Python</span><span>JavaScript</span><span>emergent behaviour</span></div>
+    <div class="links">
+      <a class="btn solid" href="play/dials-v1.html">Watch them ↗</a>
+      <a class="btn" href="https://github.com/PressureCook/dials-v1">Code</a>
+    </div>
+  </div>
+</section>
+
+<!-- 04 -->
+<section class="proj flip" id="limbforge">
+  <div class="media"><img src="img/limb.jpg" alt="LimbForge: pose tracking, evolved actuator and printable parts" loading="lazy"></div>
+  <div>
+    <span class="num">04 / evolutionary design</span>
+    <h3>LimbForge</h3>
+    <p class="hook">Most prosthetics are designed by people. I wanted to see what happens if you let evolution have a go.</p>
+    <p>Film someone moving. LimbForge tracks their joints with MediaPipe, then evolves an actuator mechanism to reproduce that movement, starting from two bones and one actuator and growing linkages, springs and extra motors only when they earn their place. It simulates the physics, sizes real motors, and exports 3D printable parts.</p>
+    <div class="tags"><span>Python</span><span>NumPy</span><span>MediaPipe</span><span>genetic algorithms</span><span>physics sim</span><span>Three.js</span></div>
+    <div class="links">
+      <a class="btn" href="https://github.com/PressureCook/limbforge">Pipeline code</a>
+      <a class="btn" href="https://github.com/PressureCook/open-topology-engine">Evolution engine</a>
+    </div>
+  </div>
+</section>
+
+<!-- 05 -->
+<section class="proj" id="fruit">
+  <div class="media"><img src="img/cnn2.jpg" alt="Comparing a custom CNN and MobileNetV3 for fruit freshness" loading="lazy"></div>
+  <div>
+    <span class="num">05 / final year project</span>
+    <h3>FreshScan: is this fruit going off?</h3>
+    <p class="hook">A cheap, offline quality check for smallholder farmers. Point a phone at a banana, apple or orange.</p>
+    <p>I trained two models: a CNN I designed from scratch, and MobileNetV3 with transfer learning. Close to a tie on accuracy, but MobileNet trained much faster and runs lighter, which matters more on a cheap phone in a field. Exported to ONNX so it runs right in the browser.</p>
+    <div class="stat"><div><b>~99%</b>MobileNetV3</div><div><b>~97 to 98%</b>custom CNN</div><div><b>0</b>internet needed</div></div>
+    <div class="tags"><span>PyTorch</span><span>ONNX</span><span>Next.js</span><span>computer vision</span></div>
+    <div class="links">
+      <a class="btn solid" href="https://studio-9682297283-9f88c.web.app/">Try it on your phone ↗</a>
+      <a class="btn" href="https://github.com/PressureCook/fruit-scanner">Code</a>
+      <a class="btn" href="https://colab.research.google.com/drive/1JWRHCgwSL284IfoxmMdVCy5sYw09AyHs">Training notebook</a>
+    </div>
+  </div>
+</section>
+
+<!-- 06 -->
+<section class="proj flip" id="raytracer">
+  <div class="media"><div class="pair"><img src="img/rt.jpg" alt="Ray traced spheres in the wrong colours" loading="lazy"><img src="img/rt_ok.jpg" alt="Fixed red sphere and CT head volume renders" loading="lazy"></div><span class="scribble">bug, then fix</span></div>
+  <div>
+    <span class="num">06 / graphics</span>
+    <h3>I taught my computer how light works</h3>
+    <p class="hook">It immediately got it wrong. Some of my favourite renders.</p>
+    <p>A ray tracer in Java, every step written by hand: fire a ray per pixel, test the sphere, work out diffuse and specular light. Mine was meant to be a red ball. I'd let the light direction leak into the colour maths, so moving the light repainted it green, then blue, then orange.</p>
+    <p>The fixed version goes further: the same rays march through 256 slices of a CT scan of a human head.</p>
+    <div class="tags"><span>Java</span><span>ray tracing</span><span>volume rendering</span><span>linear algebra</span></div>
+    <div class="links"><span class="muted">Coursework, so the code stays private. Happy to walk through it.</span></div>
+  </div>
+</section>
+
+<!-- 07 -->
+<section class="proj" id="rpg">
+  <div class="media"><img src="img/rpg.jpg" alt="Life RPG stats screen" loading="lazy"></div>
+  <div>
+    <span class="num">07 / app</span>
+    <h3>Life RPG</h3>
+    <p class="hook">I turned my life into an RPG. Current weakest stat: Creativity, at 18. Awkward, considering I built it.</p>
+    <p>Seven stats, levelled by habits and quests. Ignore them and they decay, faster the longer you leave them. That rule is the whole point: skip the gym for a week and you lose a bit, skip it for two months and you lose a lot. One HTML file, saves in your browser.</p>
+    <div class="tags"><span>HTML/CSS/JS</span><span>no build step</span><span>offline first</span></div>
+    <div class="links">
+      <a class="btn solid" href="play/life-rpg.html">Play ↗</a>
+      <a class="btn" href="https://github.com/PressureCook/life-rpg">Code</a>
+    </div>
+  </div>
+</section>
+
+<!-- 08 -->
+<section class="proj flip" id="coach">
+  <div class="media"><div class="pair"><img src="img/coach-2.jpg" alt="South Wales coach company timesheet app on a phone" loading="lazy"><img src="img/coach-3.jpg" alt="Timesheet app screen" loading="lazy"></div></div>
+  <div>
+    <span class="num">08 / client work</span>
+    <h3>South Wales coach company timesheet app</h3>
+    <p class="hook">Coach drivers were filling in paper timesheets. Now it's a phone app.</p>
+    <p>Built for a coach company in South Wales. Drivers log their routes and hours for the week and send it straight to the audit office. Sign in by emailed code, works offline, exports a Word document in the browser. One web app wrapped for Android and iOS with Capacitor, with a small Google Apps Script backend.</p>
+    <div class="tags"><span>JavaScript</span><span>Capacitor</span><span>Android</span><span>Google Apps Script</span></div>
+    <div class="links">
+      <a class="btn solid" href="play/timesheet/">Try the demo ↗</a>
+      <a class="btn" href="https://github.com/PressureCook/timesheet">Code</a>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div><img src="img/suntech.jpg" alt="Sun Tech, where I worked at fifteen" loading="lazy"></div>
+  <div>
+    <h3>About</h3>
+    <p>At fifteen I was working in a metallurgical lab in South Africa for R20 a week. It taught me what showing up every day is worth, long before I wrote any code.</p>
+    <p>I finished a BSc in Software Engineering at Swansea in 2026 with a 2:1. That's my baseline. Everything on this page I built because I wanted to know the answer, and most of it taught me something the course didn't.</p>
+    <div class="next"><b>What I'm working on now</b><p>Getting into AI infrastructure. I'm setting up GPU training infrastructure with Linux and Kubernetes, and moving FreshScan's training onto multiple GPUs on it.</p></div>
+  </div>
+</section>
+
+<footer>
+  <div><a href="https://www.linkedin.com/in/takunda-kuyayama/">linkedin</a><a href="https://github.com/PressureCook">github</a></div>
+  <div>Swansea, Wales · 2026</div>
+</footer>
+
+</div>
+<script>
+(function(){var b=document.getElementById('theme'),r=document.documentElement,k='theme';
+try{var s=localStorage.getItem(k);if(s)r.setAttribute('data-theme',s)}catch(e){}
+b.onclick=function(){var cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');var n=cur==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}};})();
+</script>
+</body>
+</html>
