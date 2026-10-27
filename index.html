@@ -59,6 +59,32 @@ nav.top a:hover{color:var(--accent)}
 .index a:hover{color:var(--accent)}
 .index a i{font-style:normal;color:var(--ink-3)}
 h2.section{font:600 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:56px 0 0}
+.index{gap:24px 28px;align-items:start}
+.index .grp b{display:block;font:600 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);padding-bottom:6px;border-bottom:1px solid var(--line)}
+
+/* category banners */
+.cat{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;padding:72px 0 0}
+.cat .k{font:600 12px var(--mono);color:var(--accent)}
+.cat h2{font-size:clamp(22px,2.6vw,28px);letter-spacing:-.015em;margin:0}
+.cat p{flex-basis:100%;margin:0;color:var(--ink-3);font-size:15px}
+.cat + .proj{border-top:1px solid var(--line);margin-top:24px}
+
+/* roadmap */
+.prog{margin:4px 0 20px}
+.prog .bar{height:8px;background:var(--tag);border-radius:999px;overflow:hidden}
+.prog .bar span{display:block;height:100%;width:0;background:var(--accent);border-radius:999px}
+.prog .ends{display:flex;justify-content:space-between;gap:10px;font:12px var(--mono);color:var(--ink-3);margin-top:6px}
+.prog .ends b{color:var(--ink);font-weight:600}
+.phases{list-style:none;padding:0;margin:0 0 16px;border-top:1px solid var(--line)}
+.phases li{display:grid;grid-template-columns:1fr auto;gap:2px 14px;padding:12px 0;border-bottom:1px dashed var(--line)}
+.phases .d{font:12px var(--mono);color:var(--ink-3)}
+.phases b{display:block;color:var(--ink);font-weight:600}
+.proj .phases p{margin:2px 0 0;font-size:15px}
+.phases .st{grid-column:2;grid-row:1/span 3;align-self:start;font:11px var(--mono);padding:3px 9px;border-radius:999px;background:var(--tag);color:var(--ink-3);white-space:nowrap}
+.phases .d,.phases b,.phases p{grid-column:1}
+.phases li.now .st{background:var(--accent);color:#fff}
+.phases li.done .st{background:#2f7d4a;color:#fff}
+.phases li.done b{text-decoration:line-through;text-decoration-color:var(--ink-3)}
 
 /* project */
 .proj{display:grid;grid-template-columns:1fr;gap:28px;padding:56px 0;border-bottom:1px solid var(--line)}
@@ -132,21 +158,60 @@ footer a:hover{color:var(--accent)}
 
 <h2 class="section" id="work">The work</h2>
 <div class="index">
-  <a href="#dials"><i>01</i> Dials model</a>
-  <a href="#society"><i>02</i> Dial Society</a>
-  <a href="#v1"><i>03</i> Dials v1</a>
-  <a href="#limbforge"><i>04</i> LimbForge</a>
-  <a href="#fruit"><i>05</i> FreshScan</a>
-  <a href="#raytracer"><i>06</i> Ray tracer</a>
-  <a href="#rpg"><i>07</i> Life RPG</a>
-  <a href="#coach"><i>08</i> coach timesheet</a>
+  <div class="grp"><b>Infrastructure</b>
+    <a href="#roadmap"><i>01</i> 90 day roadmap</a>
+  </div>
+  <div class="grp"><b>Research and simulation</b>
+    <a href="#dials"><i>02</i> Dials model</a>
+    <a href="#society"><i>03</i> Dial Society</a>
+    <a href="#v1"><i>04</i> Dials v1</a>
+    <a href="#limbforge"><i>05</i> LimbForge</a>
+  </div>
+  <div class="grp"><b>Machine learning and graphics</b>
+    <a href="#fruit"><i>06</i> FreshScan</a>
+    <a href="#raytracer"><i>07</i> Ray tracer</a>
+  </div>
+  <div class="grp"><b>Apps and client work</b>
+    <a href="#rpg"><i>08</i> Life RPG</a>
+    <a href="#coach"><i>09</i> coach timesheet</a>
+  </div>
 </div>
+
+<div class="cat" id="infra"><span class="k">A</span><h2>Infrastructure</h2><p>Where I'm heading: running the machines that AI runs on.</p></div>
+
+<section class="proj" id="roadmap">
+  <div class="media"><img src="img/machine.jpg" alt="Terminal showing a ray tracer build, with a sticky note asking what happens on 10,000 machines at 3am" loading="lazy"><span class="scribble" id="rmNote">day 1 of 90</span></div>
+  <div>
+    <span class="num">01 / in progress</span>
+    <h3>90 days to AI infrastructure</h3>
+    <p class="hook">Everything below runs on one laptop. I want to learn what it takes to keep it running on ten thousand machines at 3am.</p>
+    <p>South Wales is about to fill up with GPU data centres. I gave myself 90 days to go from software engineering graduate to someone who can run them: Linux, networking, Kubernetes, GPUs, monitoring and Go, with FreshScan as the workload I train and serve throughout.</p>
+    <div class="prog" aria-label="Roadmap progress">
+      <div class="bar"><span id="rmBar"></span></div>
+      <div class="ends"><span>26 Oct 2026</span><b id="rmDay">day 1 of 90</b><span>24 Jan 2027</span></div>
+    </div>
+    <ol class="phases" id="phases">
+      <li data-from="1" data-to="21" data-done="0"><span class="d">days 1 to 21</span><b>Linux and networking</b><p>Servers from the terminal, subnetting by hand, firewalls, SSH keys, nginx.</p><span class="st">up next</span></li>
+      <li data-from="22" data-to="42" data-done="0"><span class="d">days 22 to 42</span><b>Docker, Kubernetes and the CKA</b><p>FreshScan as a container, a cluster built with kubeadm, then the CKA exam.</p><span class="st">up next</span></li>
+      <li data-from="43" data-to="63" data-done="0"><span class="d">days 43 to 63</span><b>GPUs, Slurm and monitoring</b><p>FreshScan training on multiple GPUs, a Slurm cluster, Prometheus and Grafana on the hardware, all rebuilt from scratch with Terraform and Ansible.</p><span class="st">up next</span></li>
+      <li data-from="22" data-to="63" data-done="0"><span class="d">alongside, days 22 to 63</span><b>Go</b><p>A health check CLI, a client-go tool and a Prometheus exporter for GPU health. Then break it all on purpose and write the postmortem.</p><span class="st">up next</span></li>
+      <li data-from="64" data-to="90" data-done="0"><span class="d">days 64 to 90</span><b>Flagship project</b><p>One repo: a GPU training cluster for crop quality classification, with a runbook, cost per hour and a video walkthrough.</p><span class="st">up next</span></li>
+    </ol>
+    <div class="tags"><span>Linux</span><span>networking</span><span>Docker</span><span>Kubernetes</span><span>Go</span><span>Slurm</span><span>Prometheus</span><span>Terraform</span></div>
+    <div class="links">
+      <a class="btn solid" href="https://www.linkedin.com/in/takunda-kuyayama/">Follow along ↗</a>
+      <a class="btn" href="https://github.com/PressureCook">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<div class="cat" id="research"><span class="k">B</span><h2>Research and simulation</h2><p>Ideas I wanted answers to, turned into models you can run.</p></div>
 
 <!-- 01 -->
 <section class="proj" id="dials">
   <div class="media"><img src="img/psycho.jpg" alt="Scatter plot of thousands of people on fear and guilt dials, with the low zone circled" loading="lazy"><span class="scribble">everyone's on here somewhere</span></div>
   <div>
-    <span class="num">01 / research + ML</span>
+    <span class="num">02 / research + ML</span>
     <h3>A three dial model of psychopathy</h3>
     <p class="hook">What if psychopathy isn't a category, just a corner of a space everyone lives in?</p>
     <p>The model: three dials, <b>reward</b>, <b>fear</b> and <b>guilt</b>. Temperament sets where they start, upbringing moves them. Psychopathy is where fear and guilt both sit low.</p>
@@ -168,7 +233,7 @@ footer a:hover{color:var(--accent)}
 <section class="proj flip" id="society">
   <div class="media"><img src="img/society.jpg" alt="Dial Society simulation dashboard" loading="lazy"></div>
   <div>
-    <span class="num">02 / simulation</span>
+    <span class="num">03 / simulation</span>
     <h3>Dial Society</h3>
     <p class="hook">Give every person in a society the same three dials. Let them learn. Watch who ends up running the place.</p>
     <p>Every agent is a small learning AI trying to hold more power. Each generation they imagine life under slightly different rules, push the rules their way, raise children whose dials are shaped by how they were brought up, then deal, cheat, form alliances and wear masks. Runs on real coastlines, in batches across every CPU core.</p>
@@ -184,7 +249,7 @@ footer a:hover{color:var(--accent)}
 <section class="proj" id="v1">
   <div class="media"><img src="img/game.jpg" alt="Dials v1 agents in a world with too little food" loading="lazy"><span class="scribble">it threatened me</span></div>
   <div>
-    <span class="num">03 / simulation</span>
+    <span class="num">04 / simulation</span>
     <h3>Dials v1: agents that lie</h3>
     <p class="hook">I hurt an AI in my game. It promised to behave, then gossiped about me to the others, then threatened me.</p>
     <p>A rewrite at the level of single agents. Sixteen of them, each with their own dials, in a world with too little food. They forage, steal, give, promise, break promises, gossip and threaten. Then I measure what each dial does.</p>
@@ -201,7 +266,7 @@ footer a:hover{color:var(--accent)}
 <section class="proj flip" id="limbforge">
   <div class="media"><img src="img/limb.jpg" alt="LimbForge: pose tracking, evolved actuator and printable parts" loading="lazy"></div>
   <div>
-    <span class="num">04 / evolutionary design</span>
+    <span class="num">05 / evolutionary design</span>
     <h3>LimbForge</h3>
     <p class="hook">Most prosthetics are designed by people. I wanted to see what happens if you let evolution have a go.</p>
     <p>Film someone moving. LimbForge tracks their joints with MediaPipe, then evolves an actuator mechanism to reproduce that movement, starting from two bones and one actuator and growing linkages, springs and extra motors only when they earn their place. It simulates the physics, sizes real motors, and exports 3D printable parts.</p>
@@ -213,11 +278,13 @@ footer a:hover{color:var(--accent)}
   </div>
 </section>
 
+<div class="cat" id="ml"><span class="k">C</span><h2>Machine learning and graphics</h2><p>Models and renderers, built from first principles.</p></div>
+
 <!-- 05 -->
 <section class="proj" id="fruit">
   <div class="media"><img src="img/cnn2.jpg" alt="Comparing a custom CNN and MobileNetV3 for fruit freshness" loading="lazy"></div>
   <div>
-    <span class="num">05 / final year project</span>
+    <span class="num">06 / final year project</span>
     <h3>FreshScan: is this fruit going off?</h3>
     <p class="hook">A cheap, offline quality check for smallholder farmers. Point a phone at a banana, apple or orange.</p>
     <p>I trained two models: a CNN I designed from scratch, and MobileNetV3 with transfer learning. Close to a tie on accuracy, but MobileNet trained much faster and runs lighter, which matters more on a cheap phone in a field. Exported to ONNX so it runs right in the browser.</p>
@@ -235,7 +302,7 @@ footer a:hover{color:var(--accent)}
 <section class="proj flip" id="raytracer">
   <div class="media"><div class="pair"><img src="img/rt.jpg" alt="Ray traced spheres in the wrong colours" loading="lazy"><img src="img/rt_ok.jpg" alt="Fixed red sphere and CT head volume renders" loading="lazy"></div><span class="scribble">bug, then fix</span></div>
   <div>
-    <span class="num">06 / graphics</span>
+    <span class="num">07 / graphics</span>
     <h3>I taught my computer how light works</h3>
     <p class="hook">It immediately got it wrong. Some of my favourite renders.</p>
     <p>A ray tracer in Java, every step written by hand: fire a ray per pixel, test the sphere, work out diffuse and specular light. Mine was meant to be a red ball. I'd let the light direction leak into the colour maths, so moving the light repainted it green, then blue, then orange.</p>
@@ -245,11 +312,13 @@ footer a:hover{color:var(--accent)}
   </div>
 </section>
 
+<div class="cat" id="apps"><span class="k">D</span><h2>Apps and client work</h2><p>Small tools people actually use.</p></div>
+
 <!-- 07 -->
 <section class="proj" id="rpg">
   <div class="media"><img src="img/rpg.jpg" alt="Life RPG stats screen" loading="lazy"></div>
   <div>
-    <span class="num">07 / app</span>
+    <span class="num">08 / app</span>
     <h3>Life RPG</h3>
     <p class="hook">I turned my life into an RPG. Current weakest stat: Creativity, at 18. Awkward, considering I built it.</p>
     <p>Seven stats, levelled by habits and quests. Ignore them and they decay, faster the longer you leave them. That rule is the whole point: skip the gym for a week and you lose a bit, skip it for two months and you lose a lot. One HTML file, saves in your browser.</p>
@@ -265,7 +334,7 @@ footer a:hover{color:var(--accent)}
 <section class="proj flip" id="coach">
   <div class="media"><div class="pair"><img src="img/coach-2.jpg" alt="South Wales coach company timesheet app on a phone" loading="lazy"><img src="img/coach-3.jpg" alt="Timesheet app screen" loading="lazy"></div></div>
   <div>
-    <span class="num">08 / client work</span>
+    <span class="num">09 / client work</span>
     <h3>South Wales coach company timesheet app</h3>
     <p class="hook">Coach drivers were filling in paper timesheets. Now it's a phone app.</p>
     <p>Built for a coach company in South Wales. Drivers log their routes and hours for the week and send it straight to the audit office. Sign in by emailed code, works offline, exports a Word document in the browser. One web app wrapped for Android and iOS with Capacitor, with a small Google Apps Script backend.</p>
@@ -283,7 +352,7 @@ footer a:hover{color:var(--accent)}
     <h3>About</h3>
     <p>At fifteen I was working in a metallurgical lab in South Africa for R20 a week. It taught me what showing up every day is worth, long before I wrote any code.</p>
     <p>I finished a BSc in Software Engineering at Swansea in 2026 with a 2:1. That's my baseline. Everything on this page I built because I wanted to know the answer, and most of it taught me something the course didn't.</p>
-    <div class="next"><b>What I'm working on now</b><p>Getting into AI infrastructure. I'm setting up GPU training infrastructure with Linux and Kubernetes, and moving FreshScan's training onto multiple GPUs on it.</p></div>
+    <div class="next"><b>What I'm working on now</b><p>Getting into AI infrastructure. I'm setting up GPU training infrastructure with Linux and Kubernetes, and moving FreshScan's training onto multiple GPUs on it. <a href="#roadmap">See the 90 day roadmap</a>.</p></div>
   </div>
 </section>
 
@@ -313,6 +382,14 @@ var buf='';addEventListener('keydown',function(k){if(k.key==='Escape')return hid
 (function(){var b=document.getElementById('theme'),r=document.documentElement,k='theme';
 try{var s=localStorage.getItem(k);if(s)r.setAttribute('data-theme',s)}catch(e){}
 b.onclick=function(){var cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');var n=cur==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}};})();
+</script>
+<script>
+(function(){var start=new Date(2026,9,26),day=Math.floor((Date.now()-start)/864e5)+1;day=Math.max(1,Math.min(90,day));
+var t='day '+day+' of 90';document.getElementById('rmDay').textContent=t;document.getElementById('rmNote').textContent=t;
+document.getElementById('rmBar').style.width=(day/90*100)+'%';
+[].forEach.call(document.querySelectorAll('#phases li'),function(li){var st=li.querySelector('.st');
+if(li.dataset.done==='1'){li.classList.add('done');st.textContent='done'}
+else if(day>=+li.dataset.from&&day<=+li.dataset.to){li.classList.add('now');st.textContent='now'}});})();
 </script>
 </body>
 </html>
